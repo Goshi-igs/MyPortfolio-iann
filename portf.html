@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iann Godwin F. Surat — IT Professional & Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <style>
+    :root {
+        --bg-color: #040609;
+        --card-bg: rgba(11, 15, 25, 0.75);
+        --border-color: rgba(255, 255, 255, 0.07);
+        --border-hover: rgba(139, 92, 246, 0.5);
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        --accent-solid: #8b5cf6;
+        --cyan-glow: #06b6d4;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Ambient Cybernetic Grid Background Overlay */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 50px 50px;
+        z-index: -2;
+        pointer-events: none;
+    }
+
+    /* Ambient Glow Background Blobs */
+    .ambient-glow {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        background: rgba(99, 102, 241, 0.1);
+        filter: blur(150px);
+        border-radius: 50%;
+        z-index: -1;
+        top: -100px;
+        left: -100px;
+        animation: float 14s ease-in-out infinite alternate;
+        pointer-events: none;
+    }
+
+    .ambient-glow.secondary {
+        top: 50%;
+        right: -150px;
+        background: rgba(236, 72, 153, 0.08);
+        animation-delay: -7s;
+    }
+
+    .ambient-glow.tertiary {
+        bottom: -150px;
+        left: 20%;
+        background: rgba(6, 182, 212, 0.07);
+        animation-delay: -3s;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) scale(1) rotate(0deg); }
+        100% { transform: translateY(40px) scale(1.1) rotate(5deg); }
+    }
+
+    /* Cute Cartoon Cat Face Background Follower Layer */
+    .big-cat-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: -1; /* Placed right behind portfolio contents */
+        overflow: hidden;
+    }
+
+    .big-cat-mascot {
+        position: absolute;
+        width: 180px;
+        height: 150px;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease-out;
+        filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.2));
+        opacity: 0.85;
+    }
+
+    /* Cartoon Cat Face Structure */
+    .cat-head {
+        position: relative;
+        width: 140px;
+        height: 110px;
+        background: rgba(20, 24, 40, 0.85);
+        border: 2px solid rgba(168, 85, 247, 0.4);
+        border-radius: 60px 60px 50px 50px;
+        margin: 20px auto 0 auto;
+        backdrop-filter: blur(6px);
+        box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.15);
+    }
+
+    /* Ears */
+    .cat-ear {
+        position: absolute;
+        top: -26px;
+        width: 45px;
+        height: 50px;
+        background: rgba(20, 24, 40, 0.85);
+        border: 2px solid rgba(168, 85, 247, 0.4);
+        border-top-left-radius: 40px;
+        border-top-right-radius: 10px;
+        transform-origin: bottom center;
+        z-index: -1;
+    }
+
+    .cat-ear.left {
+        left: 10px;
+        transform: rotate(-15deg);
+        border-radius: 40px 10px 5px 25px;
+    }
+
+    .cat-ear.right {
+        right: 10px;
+        transform: rotate(15deg);
+        border-radius: 10px 40px 25px 5px;
+    }
+
+    .cat-ear::after {
+        content: '';
+        position: absolute;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        height: 30px;
+        background: rgba(236, 72, 153, 0.15);
+        border-radius: 20px 20px 0 0;
+    }
+
+    /* Eyes Container */
+    .cat-eyes {
+        position: absolute;
+        top: 38px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 18px;
+    }
+
+    .cat-eye {
+        width: 32px;
+        height: 38px;
+        background: #f8fafc;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Pupils that track mouse */
+    .cat-pupil {
+        position: absolute;
+        width: 16px;
+        height: 20px;
+        background: #0f172a;
+        border-radius: 50%;
+        top: 9px;
+        left: 8px;
+        transition: transform 0.05s ease-out;
+    }
+
+    .cat-pupil::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 5px;
+        height: 5px;
+        background: #ffffff;
+        border-radius: 50%;
+    }
+
+    /* Nose & Mouth */
+    .cat-nose {
+        position: absolute;
+        top: 72px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 8px;
+        background: #ec4899;
+        clip-path: polygon(50% 100%, 0 0, 100% 0);
+        box-shadow: 0 0 8px #ec4899;
+    }
+
+    .cat-mouth {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 24px;
+        height: 10px;
+        border-bottom: 2px solid rgba(248, 250, 252, 0.6);
+        border-radius: 0 0 12px 12px;
+    }
+
+    /* Whiskers */
+    .whiskers {
+        position: absolute;
+        top: 72px;
+        width: 36px;
+        height: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .whiskers.left {
+        left: -28px;
+    }
+
+    .whiskers.left span {
+        height: 1.5px;
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(-10deg);
+        transform-origin: right center;
+    }
+    .whiskers.left span:nth-child(2) { transform: rotate(0deg); }
+    .whiskers.left span:nth-child(3) { transform: rotate(10deg); }
+
+    .whiskers.right {
+        right: -28px;
+    }
+
+    .whiskers.right span {
+        height: 1.5px;
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(10deg);
+        transform-origin: left center;
+    }
+    .whiskers.right span:nth-child(2) { transform: rotate(0deg); }
+    .whiskers.right span:nth-child(3) { transform: rotate(-10deg); }
+
+    .cat-label {
+        text-align: center;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--cyan-glow);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 8px;
+        opacity: 0.75;
+    }
+
+    /* Background Floating Space Rockets & Random Cute Games Animation Layer */
+    .space-background-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        overflow: hidden;
+    }
+
+    .floating-item {
+        position: absolute;
+        bottom: -100px;
+        color: rgba(255, 255, 255, 0.1);
+        font-size: 1.5rem;
+        animation: flyToSpace linear infinite;
+    }
+
+    @keyframes flyToSpace {
+        0% {
+            transform: translateY(0) translateX(0) rotate(0deg);
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+        }
+        80% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-110vh) translateX(50px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Main Container */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    /* Navigation */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 1.5rem;
+        margin-bottom: 2.5rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: sticky;
+        top: 20px;
+        z-index: 100;
+    }
+
+    .logo {
+        font-weight: 800;
+        font-size: 1.25rem;
+        background: var(--accent-glow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo i {
+        -webkit-text-fill-color: initial;
+        color: var(--accent-solid);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .nav-links a:hover {
+        color: var(--text-primary);
+    }
+
+    /* Bento Grid Layout */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .bento-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 2rem;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bento-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-hover);
+        box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+    }
+
+    /* Span Utilities */
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+
+    /* Scrollable Container Modifier */
+    .scrollable-card {
+        max-height: 540px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scroll-content {
+        overflow-y: auto;
+        max-height: 400px;
+        padding-right: 6px;
+        margin-top: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Custom Scrollbar */
+    .scroll-content::-webkit-scrollbar {
+        width: 4px;
+    }
+    .scroll-content::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+    }
+    .scroll-content::-webkit-scrollbar-thumb {
+        background: rgba(139, 92, 246, 0.4);
+        border-radius: 10px;
+    }
+    .scroll-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(139, 92, 246, 0.8);
+    }
+
+    /* Typography & UI Components */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(6, 182, 212, 0.08);
+        border: 1px solid rgba(6, 182, 212, 0.25);
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        color: var(--cyan-glow);
+        font-weight: 600;
+        width: fit-content;
+        margin-bottom: 1.25rem;
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--cyan-glow);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--cyan-glow);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    h1 span {
+        background: var(--accent-glow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p, li {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .card-title i {
+        color: var(--accent-solid);
+        background: rgba(139, 92, 246, 0.1);
+        padding: 8px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+    }
+
+    /* Profile Card */
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .avatar-container {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        padding: 3px;
+        background: var(--accent-glow);
+        margin-bottom: 1rem;
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    }
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #1f2937;
+    }
+
+    .contact-info {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 0.75rem;
+        width: 100%;
+        text-align: left;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .contact-info span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        word-break: break-all;
+    }
+
+    .contact-info i {
+        color: var(--cyan-glow);
+        min-width: 14px;
+    }
+
+    /* Skills Categorization System */
+    .skills-category-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .skill-category-title {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-secondary);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .skill-item {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid var(--border-color);
+        padding: 9px 12px;
+        border-radius: 12px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+        background: rgba(139, 92, 246, 0.08);
+        border-color: rgba(139, 92, 246, 0.35);
+        transform: translateY(-2px);
+    }
+
+    .skill-item i {
+        font-size: 1rem;
+        color: var(--accent-solid);
+        min-width: 16px;
+        text-align: center;
+    }
+
+    /* Timeline Items */
+    .timeline-item {
+        border-left: 2px solid rgba(139, 92, 246, 0.3);
+        padding-left: 1.25rem;
+        position: relative;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--cyan-glow);
+        box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .job-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .job-company {
+        font-size: 0.85rem;
+        color: var(--cyan-glow);
+        font-weight: 600;
+        margin: 2px 0;
+    }
+
+    .job-date {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .job-details {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .job-details li {
+        font-size: 0.85rem;
+        position: relative;
+        padding-left: 15px;
+    }
+
+    .job-details li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--accent-solid);
+    }
+
+    /* Projects Layout Grid with Integrated Media */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .project-card-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-color);
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+    }
+
+    .project-card-item:hover {
+        border-color: rgba(6, 182, 212, 0.4);
+        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.12);
+        transform: translateY(-3px);
+    }
+
+    .project-media-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        background: #000;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .project-media-wrapper video,
+    .project-media-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        outline: none;
+    }
+
+    .project-content {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        gap: 12px;
+    }
+
+    /* Video Showcase Containers for Valorant Montages */
+    .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+        margin-top: 1rem;
+    }
+
+    .video-card-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+    }
+
+    .video-card-item:hover {
+        border-color: var(--cyan-glow);
+        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+        transform: translateY(-3px);
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        background: #000;
+    }
+
+    .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        outline: none;
+    }
+
+    .video-info {
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .video-info strong {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .video-info span {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+    }
+
+    /* CTA Button */
+    .cta-btn {
+        background: var(--accent-glow);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin-top: 1.5rem;
+        box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+    }
+
+    .cta-btn:hover {
+        opacity: 0.95;
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.6);
+    }
+
+    /* Responsive Breakpoints */
+    @media(max-width: 950px) {
+        .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        .span-3 { grid-column: span 2; }
+    }
+
+    @media(max-width: 650px) {
+        .bento-grid { grid-template-columns: 1fr; }
+        .span-2, .span-3 { grid-column: span 1; }
+        h1 { font-size: 2.1rem; }
+        .container { padding: 1rem; }
+        nav { flex-direction: column; gap: 1rem; text-align: center; }
+        .nav-links { justify-content: center; gap: 1rem; }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="big-cat-background">
+        <div class="big-cat-mascot" id="bigCatMascot">
+            <div class="cat-ear left"></div>
+            <div class="cat-ear right"></div>
+            <div class="cat-head">
+                <div class="cat-eyes">
+                    <div class="cat-eye">
+                        <div class="cat-pupil" id="leftPupil"></div>
+                    </div>
+                    <div class="cat-eye">
+                        <div class="cat-pupil" id="rightPupil"></div>
+                    </div>
+                </div>
+                <div class="cat-nose"></div>
+                <div class="cat-mouth"></div>
+                
+                <div class="whiskers left">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="whiskers right">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="cat-label"><strong>AKO SI TASHI LOVE NA LOVE KO SI IANN MWA MWA</strong></div>
+        </div>
+    </div>
+
+    <div class="space-background-layer" id="spaceBackground"></div>
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow secondary"></div>
+    <div class="ambient-glow tertiary"></div>
+
+<div class="container">
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-terminal"></i> iann.godwin()
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about"><i class="fa-solid fa-user-gear"></i> About</a></li>
+            <li><a href="#experience"><i class="fa-solid fa-timeline"></i> Experience</a></li>
+            <li><a href="#projects"><i class="fa-solid fa-code-branch"></i> Projects</a></li>
+            <li><a href="#gaming"><i class="fa-solid fa-gamepad"></i> Montages</a></li>
+        </ul>
+    </nav>
+
+    <main class="bento-grid">
+        
+        <div class="bento-card span-2" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div class="status-badge">
+                    <span class="status-dot"></span> Ready to Relocate & Work in Manila
+                </div>
+                <h1>Hello, I'm <span>Iann Godwin F. Surat</span></h1>
+                <p>Detail-oriented IT Professional with advanced technical capabilities in hardware & software diagnostics, network maintenance, infrastructure administration, and creative software engineering. Passionate about empowering efficiency through automation where data meets precision.</p>
+            </div>
+            <a href="https://mail.google.com" class="cta-btn">
+                <i class="fa-solid fa-paper-plane"></i> Let's Connect & Work Together
+            </a>
+        </div>
+
+        <div class="bento-card profile-card">
+            <div class="avatar-container">
+                <img src="images/mirrirselfie.jpg" alt="Iann Godwin" class="avatar">
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700;">Iann Godwin F. Surat</h3>
+            <p style="font-size: 0.8rem; color: var(--cyan-glow); font-weight: 600; margin-top: 2px;"><i class="fa-solid fa-location-dot"></i> San Fernando City, La Union</p>
+            
+            <div class="contact-info">
+                <span><i class="fa-solid fa-phone-volume"></i> 09491568540</span>
+                <span><i class="fa-solid fa-envelope-circle-check"></i> ianngodwin.flores.surat@gmail.com</span>
+            </div>
+        </div>
+
+        <div class="bento-card span-3" id="about">
+            <div class="card-title" style="margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-microchip"></i> Core Competencies & Tech Stack
+            </div>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">Equipped with tools and frameworks spanning modern software engineering, creative design, and robust infrastructure systems.</p>
+
+            <div class="skills-category-wrapper">
+                <div>
+                    <div class="skill-category-title"><i class="fa-solid fa-code"></i> Development & Programming</div>
+                    <div class="skills-grid">
+                        <div class="skill-item"><i class="fa-brands fa-php" style="color: #777bb3;"></i> PHP Systems</div>
+                        <div class="skill-item"><i class="fa-brands fa-laravel" style="color: #ff2d20;"></i> Laravel Framework</div>
+                        <div class="skill-item"><i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript (JS)</div>
+                        <div class="skill-item"><i class="fa-brands fa-python" style="color: #3776ab;"></i> Python</div>
+                        <div class="skill-item"><i class="fa-solid fa-database" style="color: #00758f;"></i> MySQL Database</div>
+                        <div class="skill-item"><i class="fa-solid fa-server" style="color: #336791;"></i> PostgreSQL</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="skill-category-title"><i class="fa-solid fa-clapperboard"></i> Creative & Post-Production</div>
+                    <div class="skills-grid">
+                        <div class="skill-item"><i class="fa-solid fa-film" style="color: #9999ff;"></i> Adobe Premiere Pro</div>
+                        <div class="skill-item"><i class="fa-solid fa-image" style="color: #31a8ff;"></i> Adobe Photoshop</div>
+                        <div class="skill-item"><i class="fa-solid fa-video" style="color: #25f4ee;"></i> CapCut</div>
+                        <div class="skill-item"><i class="fa-solid fa-video" style="color: #0080ff;"></i> Wondershare Filmora</div>
+                        <div class="skill-item"><i class="fa-solid fa-palette" style="color: #00c4cc;"></i> Canva Design</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="skill-category-title"><i class="fa-solid fa-gamepad"></i> Game Dev & Infrastructure</div>
+                    <div class="skills-grid">
+                        <div class="skill-item"><i class="fa-brands fa-unreal" style="color: #ffffff;"></i> Unreal Engine</div>
+                        <div class="skill-item"><i class="fa-brands fa-unity" style="color: #cccccc;"></i> Unity Engine</div>
+                        <div class="skill-item"><i class="fa-solid fa-network-wired" style="color: var(--cyan-glow);"></i> Network Diagnostics</div>
+                        <div class="skill-item"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent-solid);"></i> Hardware & Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-card span-3 scrollable-card" id="experience">
+            <div class="card-title">
+                <i class="fa-solid fa-briefcase"></i> Work Experience & History
+            </div>
+            <p style="font-size: 0.85rem; margin-top: 4px;">Scroll through my hands-on enterprise IT background.</p>
+            
+            <div class="scroll-content">
+                
+                <div class="timeline-item">
+                    <div class="job-title"><i class="fa-solid fa-server" style="color:var(--cyan-glow); font-size:0.85rem;"></i> I.T Specialist</div>
+                    <div class="job-company">E-Precision — La Union & La Trinidad, Philippines</div>
+                    <span class="job-date"><i class="fa-regular fa-calendar-days"></i> March 2025 - May 2025</span>
+                    <ul class="job-details">
+                        <li>Installed and configured core computer hardware and software systems.</li>
+                        <li>Executed complex hardware, printer, and software troubleshooting for end-users.</li>
+                        <li>Conducted structured user onboarding and training sessions for enterprise software.</li>
+                        <li>Performed internet and network connectivity diagnostics to ensure uptime.</li>
+                        <li>Managed website updates, database configurations, price tagging, and document printing.</li>
+                        <li>Engineered structural prototypes including <strong>Prototype CRM</strong> Automated records management system</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-title"><i class="fa-solid fa-paint-brush" style="color:var(--cyan-glow); font-size:0.85rem;"></i> Layout Artist, Web Dev & Marketing</div>
+                    <div class="job-company">April Joy Home Decors and Furniture — Biday Branch</div>
+                    <span class="job-date"><i class="fa-regular fa-calendar-days"></i> Nov 2023 - Aug 2024</span>
+                    <ul class="job-details">
+                        <li>Handled layout visual design, website maintenance, and digital marketing outreach.</li>
+                        <li>Administered web digital content management workflows.</li>
+                        <li>Handled creative social media asset creation (photo & video editing for Facebook, TikTok, Instagram).</li>
+                        <li>Developed structural prototypes including <strong>Prototype ARMMS</strong> Automated records management system</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="job-title"><i class="fa-solid fa-graduation-cap" style="color:var(--cyan-glow); font-size:0.85rem;"></i> Website Developer (Internship - OJT)</div>
+                    <div class="job-company">Lorma Colleges</div>
+                    <span class="job-date"><i class="fa-regular fa-calendar-days"></i> May 2022 - Dec 2022</span>
+                    <ul class="job-details">
+                        <li>Completed intensive practical web development tasks and database tracking assignments.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bento-card span-3" id="projects">
+            <div class="card-title" style="margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-code-merge"></i> Featured Projects & Self-Initiatives
+            </div>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">“Empowering efficiency through automation — where data meets precision.” Systems built to simplify record handling, enhance accuracy, and streamline operations.</p>
+            
+            <div class="projects-grid">
+                
+                <div class="project-card-item">
+                    <div class="project-media-wrapper">
+                        <img src="images/crmlogo.jpg" alt="CRM Website Preview">
+                    </div>
+                    <div class="project-content">
+                        <div>
+                            <strong style="font-size: 0.95rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <i class="fa-solid fa-address-book" style="color: var(--cyan-glow);"></i> CRM Website
+                            </strong>
+                            <p style="font-size: 0.82rem;">Customer Relationship Management system showcasing advanced web development, database integration, and pipeline tracking skills.</p>
+                        </div>
+                        <span style="font-size: 0.72rem; color: var(--accent-solid); font-weight: 600;">Web App / CRM</span>
+                    </div>
+                </div>
+
+                <div class="project-card-item">
+                    <div class="project-media-wrapper">
+                        <img src="images/brgydisasterlogo.jpg" alt="Barangay Monitoring Preview">
+                    </div>
+                    <div class="project-content">
+                        <div>
+                            <strong style="font-size: 0.95rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <i class="fa-solid fa-shield-halved" style="color: var(--cyan-glow);"></i> Barangay Monitoring & Disaster Management
+                            </strong>
+                            <p style="font-size: 0.82rem;">A civic tech project engineered for community resilience, safety tracking, and emergency coordination.</p>
+                        </div>
+                        <span style="font-size: 0.72rem; color: var(--accent-solid); font-weight: 600;">Civic Tech / Safety</span>
+                    </div>
+                </div>
+
+                <div class="project-card-item">
+                    <div class="project-media-wrapper">
+                        <img src="images/angkaspic.jpg" alt="Agsakayak Platform Preview">
+                    </div>
+                    <div class="project-content">
+                        <div>
+                            <strong style="font-size: 0.95rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <i class="fa-solid fa-motorcycle" style="color: var(--cyan-glow);"></i> Agsakayak Platform
+                            </strong>
+                            <p style="font-size: 0.82rem;">“Ride smart, go green — Agsakayak connects you to your destination.” A modern local transport platform inspired by Grab and Angkas.</p>
+                        </div>
+                        <span style="font-size: 0.72rem; color: var(--accent-solid); font-weight: 600;">Transport Platform / UI/UX</span>
+                    </div>
+                </div>
+
+                <div class="project-card-item">
+                    <div class="project-media-wrapper">
+                        <img src="images/treeplantinglogo.jpg" alt="Lorma Tree Monitoring System Preview">
+                    </div>
+                    <div class="project-content">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <strong style="font-size: 0.95rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-seedling" style="color: var(--cyan-glow);"></i> Lorma Tree Monitoring System
+                                </strong>
+                                <a href="https://tree.lorma.edu/" target="_blank" style="color: var(--cyan-glow); font-size: 0.8rem;"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <p style="font-size: 0.82rem;">Detect and monitor plants with GPS coordinates, species data, and age tracking for environmental preservation.</p>
+                        </div>
+                        <span style="font-size: 0.72rem; color: var(--accent-solid); font-weight: 600;">Environmental Tech</span>
+                    </div>
+                </div>
+
+                <div class="project-card-item">
+                    <div class="project-media-wrapper">
+                        <video controls autoplay muted loop playsinline>
+                            <source src="images/trimvidarchaicrun.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-content">
+                        <div>
+                            <strong style="font-size: 0.95rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <i class="fa-solid fa-gamepad" style="color: var(--cyan-glow);"></i> ArchaicRun Game
+                            </strong>
+                            <p style="font-size: 0.82rem;">Endless runner featuring abilities, obstacles, and fast-paced survival gameplay developed for Mobile & PC.</p>
+                        </div>
+                        <span style="font-size: 0.72rem; color: var(--accent-solid); font-weight: 600;">Game Development</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bento-card span-3" id="gaming">
+            <div class="card-title" style="margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-clapperboard"></i> Valorant Gameplay Montages
+            </div>
+            <p style="font-size: 0.85rem; margin-bottom: 1.25rem;">Highlighting my video editing and post-production skills using Adobe Premiere Pro with high-octane gaming plays.</p>
+            
+            <div class="media-grid">
+                
+                <div class="video-card-item">
+                    <div class="video-wrapper">
+                        <video controls autoplay muted loop playsinline>
+                            <source src="images/6kvid.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <strong><i class="fa-solid fa-play" style="color: var(--cyan-glow); font-size: 0.8rem;"></i> Valorant Montage Vol. 1</strong>
+                        <span>Edited with Adobe Premiere Pro</span>
+                    </div>
+                </div>
+
+                <div class="video-card-item">
+                    <div class="video-wrapper">
+                        <video controls autoplay muted loop playsinline>
+                            <source src="images/1v5vid.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <strong><i class="fa-solid fa-play" style="color: var(--cyan-glow); font-size: 0.8rem;"></i> Valorant Montage Vol. 2</strong>
+                        <span>Edited with Adobe Premiere Pro</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    const bigCat = document.getElementById('bigCatMascot');
+    const leftPupil = document.getElementById('leftPupil');
+    const rightPupil = document.getElementById('rightPupil');
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let catX = window.innerWidth / 2, catY = window.innerHeight / 2;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animateBigCat() {
+        // Smooth trailing movement for the whole cat face head
+        catX += (mouseX - catX) * 0.05;
+        catY += (mouseY - catY) * 0.05;
+        
+        bigCat.style.left = `${catX}px`;
+        bigCat.style.top = `${catY}px`;
+
+        // Calculate eye pupils tracking relative to mouse position
+        const catRect = bigCat.getBoundingClientRect();
+        const catCenterX = catRect.left + catRect.width / 2;
+        const catCenterY = catRect.top + catRect.height / 2;
+
+        const angle = Math.atan2(mouseY - catCenterY, mouseX - catCenterX);
+        
+        // Limit max distance the pupils can move inside the eyes
+        const maxPupilDist = 6;
+        const pupilX = Math.cos(angle) * maxPupilDist;
+        const pupilY = Math.sin(angle) * maxPupilDist;
+
+        leftPupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+        rightPupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+        
+        requestAnimationFrame(animateBigCat);
+    }
+    animateBigCat();
+
+    // Background Floating Rockets and Cute Games Creator Script
+    const spaceLayer = document.getElementById('spaceBackground');
+    const icons = [
+        'fa-rocket', 
+        'fa-space-shuttle', 
+        'fa-gamepad', 
+        'fa-dice', 
+        'fa-puzzle-piece', 
+        'fa-trophy', 
+        'fa-ghost', 
+        'fa-meteor'
+    ];
+
+    function createFloatingElement() {
+        const item = document.createElement('i');
+        const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+        item.className = `fa-solid ${randomIcon} floating-item`;
+        
+        const randomX = Math.random() * window.innerWidth;
+        item.style.left = `${randomX}px`;
+        
+        const duration = Math.random() * 6 + 6;
+        item.style.animationDuration = `${duration}s`;
+        
+        const scale = Math.random() * 0.7 + 0.6;
+        item.style.transform = `scale(${scale})`;
+
+        spaceLayer.appendChild(item);
+
+        setTimeout(() => {
+            item.remove();
+        }, duration * 1000);
+    }
+
+    setInterval(createFloatingElement, 800);
+</script>
+
+</body>
+</html>
